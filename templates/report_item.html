@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report Item</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="form-container">
+
+    <h2>Report Item</h2>
+
+    <form method="POST">
+
+        <input type="text"
+               name="item_name"
+               placeholder="Item Name"
+               required>
+
+        <select name="category">
+    <option>Electronics</option>
+    <option>Wallet</option>
+    <option>ID Card</option>
+    <option>Keys</option>
+    <option>Books</option>
+    <option>Bag</option>
+    <option>Other</option>
+</select>
+
+        <input type="text"
+               name="location"
+               placeholder="Location"
+               required>
+
+        <textarea
+            name="description"
+            placeholder="Description"></textarea>
+
+        <select name="status">
+
+            <option value="LOST">Lost</option>
+            <option value="FOUND">Found</option>
+
+        </select>
+
+        <button type="submit">
+            Submit
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

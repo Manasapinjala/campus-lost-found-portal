@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>All Items</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <h1 class="page-title">Lost & Found Items</h1>
+
+    <form class="search-form" method="GET">
+
+        <input
+            type="text"
+            name="search"
+            placeholder="Search item..."
+            value="{{ search }}">
+
+        <button type="submit">
+            Search
+        </button>
+
+    </form>
+
+    <div class="items-container">
+
+        {% for item in items %}
+
+        <div class="item-card">
+
+            <h3>{{ item[1] }}</h3>
+
+            <p><strong>Category:</strong> {{ item[2] }}</p>
+
+            <p><strong>Location:</strong> {{ item[4] }}</p>
+
+            <p>
+                <strong>Status:</strong>
+
+                {% if item[5] == 'LOST' %}
+    <span class="lost-badge">LOST</span>
+
+{% elif item[5] == 'FOUND' %}
+    <span class="found-badge">FOUND</span>
+
+{% else %}
+    <span class="recovered-badge">RECOVERED</span>
+
+{% endif %}
+            </p>
+
+            <p>{{ item[3] }}</p>
+
+            <a href="/recover/{{ item[0] }}">
+                <button class="recover-btn">
+                    Mark as Recovered
+                </button>
+            </a>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</body>
+</html>
